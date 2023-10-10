@@ -7,20 +7,17 @@ class Solution {
         right[len-1] = 1;
         int prod = 1;
         int[] ans=new int[len];
+        ans[0] = 1;
         
         for(int i=1; i<len; i++){
             prod = prod * nums[i-1];
-            left[i] = prod;
+            ans[i] = prod;
         }
         
         prod = 1;
         for(int i=len-2; i>=0; i--){
             prod = prod * nums[i+1];
-            right[i] = prod;
-        }
-        
-        for(int i=0; i<len; i++){
-            ans[i] = left[i] * right[i];
+            ans[i] *= prod;
         }
         
         return ans;
