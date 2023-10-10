@@ -11,13 +11,17 @@ class Solution {
         
         for(int i=1; i<len; i++){
             prod = prod * nums[i-1];
-            ans[i] = prod;
+            left[i] = prod;
         }
         
         prod = 1;
         for(int i=len-2; i>=0; i--){
             prod = prod * nums[i+1];
-            ans[i] *= prod;
+            right[i] = prod;
+        }
+        
+        for(int i=0; i<len; i++){
+            ans[i] = left[i] * right[i];
         }
         
         return ans;
