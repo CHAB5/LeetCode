@@ -13,8 +13,6 @@ class Solution {
         boolean result = false;
         if(counter == lenOfs)
             result = true;
-        else
-            result = false;
         
         return result;
     }
