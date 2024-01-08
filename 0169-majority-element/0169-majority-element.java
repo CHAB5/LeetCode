@@ -1,28 +1,30 @@
-import java.util.*;
+import java.lang.Math;
 class Solution {
     public int majorityElement(int[] nums) {
         ArrayList<Integer> elements = new ArrayList<>();
-        ArrayList<Integer> count = new ArrayList<>();
-        for(int i=0; i<nums.length; i++){
-            if(elements.contains(nums[i])){
+        ArrayList<Integer> occurances = new ArrayList<>();
+        int majority = (int)Math.floor(nums.length/2);
+        
+        for(int i=0; i < nums.length; i++) {
+            if(elements.contains(nums[i])) {
                 int index = elements.indexOf(nums[i]);
-                count.set(index,count.get(index)+1);
+                int current = occurances.get(index);
+                current++;
+                occurances.set(index, current);
+                
+                if(current > majority) {
+                    return nums[i];
+                }
             }
-            else{
+            else {
                 elements.add(nums[i]);
-                count.add(1);
+                occurances.add(1);
+                
+                if(1 > majority) {
+                    return nums[i];
+                }
             }
         }
-        
-        int maxElement = 0;
-        int maxElementCount = 0;
-        for(Integer i:count){
-            if(i>=(nums.length/2) && i>maxElementCount){
-                maxElementCount = i;
-                maxElement = elements.get(count.indexOf(i));
-            }
-        }
-        
-        return maxElement;
+        return 0;
     }
 }
