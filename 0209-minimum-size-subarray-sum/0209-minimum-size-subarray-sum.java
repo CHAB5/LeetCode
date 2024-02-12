@@ -12,16 +12,16 @@ class Solution {
             sum += nums[endIndex];
             
             
-                while(sum >= target) {
-                    if(counter == 0) {
-                        minLen = Integer.MAX_VALUE;
-                    }
-                    counter = 1;
-                    int len = endIndex - startIndex + 1;
-                    minLen = Math.min(minLen, len);
-                    sum -= nums[startIndex];
-                    startIndex++;
+            while(sum >= target) {
+                if(counter == 0) {
+                    minLen = Integer.MAX_VALUE;
                 }
+                counter = 1;
+                int len = endIndex - startIndex + 1;
+                minLen = Math.min(minLen, len);
+                sum -= nums[startIndex];
+                startIndex++;
+            }
             
             
             endIndex++;
