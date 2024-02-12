@@ -11,7 +11,7 @@ class Solution {
             
             sum += nums[endIndex];
             
-            if(sum >= target) {
+            
                 while(sum >= target) {
                     if(counter == 0) {
                         minLen = Integer.MAX_VALUE;
@@ -22,7 +22,7 @@ class Solution {
                     sum -= nums[startIndex];
                     startIndex++;
                 }
-            }
+            
             
             endIndex++;
         }
