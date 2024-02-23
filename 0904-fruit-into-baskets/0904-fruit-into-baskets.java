@@ -5,6 +5,7 @@ class Solution {
         int left = 0, right = 0;
         Set<Integer> twoFruits = new HashSet<>();
         ArrayList<Integer> maxValues = new ArrayList<>();
+        int result = 0;
         
         if(n==0) return 0;
         
@@ -43,18 +44,22 @@ class Solution {
                 System.out.println(maxFruits);
             }
             
-            maxValues.add(maxFruits);
+            
+            if(maxFruits > result)
+                result = maxFruits;
+                
+            //maxValues.add(maxFruits);
             right++;
             
         }
         
         
-        int max = 0;
-        for(int i=0; i< maxValues.size(); i++) {
-            if(maxValues.get(i) > max)
-                max = maxValues.get(i);
-        }       
+        // int max = 0;
+        // for(int i=0; i< maxValues.size(); i++) {
+        //     if(maxValues.get(i) > max)
+        //         max = maxValues.get(i);
+        // }       
         
-        return max;
+        return result;
     }
 }
