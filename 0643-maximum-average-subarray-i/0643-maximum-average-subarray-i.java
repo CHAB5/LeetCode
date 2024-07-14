@@ -1,23 +1,22 @@
 class Solution {
     public double findMaxAverage(int[] nums, int k) {
-        int n = nums.length;
-        System.out.println("n: "+n);
-        double sum = 0.0;
-        double max = 0.0;
-        double avg = 0.0;
-        ArrayList<Double> averages = new ArrayList<>();
         
-        for(int i=0;i<k;i++){
-            sum = sum + nums[i];
+        int windowSum = 0;
+        int windowStart = 0;
+        double average = 0.0;
+        int max = Integer.MIN_VALUE;
+        
+        for(int windowEnd = 0; windowEnd < nums.length; windowEnd++) {
+            windowSum += nums[windowEnd];
+            
+            if(windowEnd >= k-1) {
+                max = Math.max(max, windowSum);
+                average = (double)max/k;
+                windowSum -= nums[windowStart];
+                windowStart++;
+            }
         }
         
-        max = sum;
-        
-        for(int i=k; i<n;i++){
-            sum = sum - nums[i-k] + nums[i];
-            max= Math.max(max,sum);
-        }
-        
-        return max/k;
+        return average;
     }
 }
