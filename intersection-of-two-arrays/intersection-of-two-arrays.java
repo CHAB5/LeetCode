@@ -1,27 +1,21 @@
 class Solution {
     public int[] intersection(int[] nums1, int[] nums2) {
-        Set<Integer> first = new HashSet<>();
-        Set<Integer> intersection = new HashSet<>();
-
+        Map<Integer, Integer> seen = new HashMap<>();
+        List<Integer> result = new ArrayList<>();
         
-        for (int i : nums1) {
-            first.add(i);
+        //Mark values occurring in nums1
+        for (int x : nums1) {
+            seen.put(x, 1);
         }
         
-        for ( int i : nums2 ) {
-            if(first.contains(i)) {
-                intersection.add(i);
+        //iterate through nums2 to check if entries are in seen but not added to the result
+        for ( int x : nums2) {
+            if(seen.containsKey(x) && seen.get(x) == 1) {
+                result.add(x);
+                seen.put(x, 0);
             }
         }
         
-        int[] result = new int[intersection.size()];
-        int j = 0;
-        
-        for ( Integer i : intersection) {
-            result[j] = i;
-            j++;
-        }
-        
-        return result;
+        return result.stream().mapToInt(i -> i).toArray();
     }
 }
