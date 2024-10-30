@@ -1,21 +1,11 @@
 class Solution {
     public int singleNumber(int[] nums) {
-        Set<Integer> numsSet = new HashSet<>();
+        int a = 0;
         
-        for (Integer i : nums) {
-            if(numsSet.contains(i)) {
-                numsSet.remove(i);
-            } else {
-                numsSet.add(i);
-            }
+        for (int i : nums) {
+            a = a ^ i;
         }
         
-        int unique = 0;
-        
-        for (Integer i : numsSet) {
-            unique = i;
-        }
-        
-        return unique;
+        return a;
     }
 }
