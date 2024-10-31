@@ -27,11 +27,11 @@ class Solution {
         
         String[] output = new String[result.size()];
         
-        int j = 0;
-        for (String i : result) {
-            output[j++] = i;
-        }
+        // int j = 0;
+        // for (String i : result) {
+        //     output[j++] = i;
+        // }
         
-        return output;
+        return result.toArray(output);
     }
 }
